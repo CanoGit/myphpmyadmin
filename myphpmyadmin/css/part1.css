@@ -1,0 +1,198 @@
+#pan_base
+{
+	border: 1px solid black;
+	width: 30%;
+	float: left;
+	height: 100%;
+}
+
+#pan_table
+{
+	border: 1px solid red;
+	width: 70%;
+	float: left;
+	height: 100%;
+}
+
+#l_base
+{
+	height: 50%;
+	width: 100%;
+	border: 1px solid green;
+}
+
+#div_info_base
+{
+	height: 50%;
+	width: 100%;
+	border: 1px solid pink;
+}
+
+#ico_crea
+{
+	border: 1px solid black;
+	
+}
+
+#ico_creation_p
+{
+	border: 1px solid black;
+}
+
+#ico_creation
+{
+	height: 40px;
+}
+
+#ico
+{
+	height: 20px;
+}
+
+#ico_img
+{
+	height: 50px;
+}
+
+#new_base
+{
+    display: none;
+    position: fixed;
+    top:0; right:0; bottom:0; left:0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#new_base:target
+{
+    display: block;
+}
+
+#fermer_new_base
+{
+    font-weight: bold;
+    padding-top: 5px;
+	padding-bottom: 5px;
+	padding-right: 7px;
+	padding-left: 7px;
+	margin-top: -10px;
+	margin-right: -10px;
+    background-color: black;
+    position: relative;
+    float: right;
+	color: white;
+	text-decoration: none;
+	border-radius: 50%;
+}
+
+#fen_new_base
+{
+	width: 20%;
+	height: 19%;
+	margin-top: 3%;
+	margin-left: auto;
+	margin-right: auto;
+	background: white;
+	position: relative;
+	border-radius: 5px;
+	box-shadow: 0px 0px 10px black;
+}
+
+#content_form
+{
+	margin-top: 20px;
+}
+
+#field_new_base
+{
+	margin-left: 4%;
+	border: none;
+}
+
+#new_base_form
+{
+	text-align: center;
+}
+
+#inp_new_base
+{
+	width: 100%;
+	border: 2px solid #4A9FF2;
+	border-radius: 5px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	outline-style: none;
+	padding-left: 2px;
+}
+
+#inp_new_base:focus
+{
+	border: 2px solid #47B34A;
+}
+
+#val_new_base
+{
+	border: none;
+	border-radius: 5px;
+	background-color: #4A9FF2;
+	color: white;
+	text-decoration: none;
+	padding: 2px 5px 2px 5px;
+}
+
+#val_new_base:hover
+{
+	background-color: #47B34A;
+}
+
+#sup_base
+{
+    display: none;
+    position: fixed;
+    top:0; right:0; bottom:0; left:0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#sup_base:target
+{
+    display: block;
+}
+
+#fen_sup_base
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5%;
+	width: 20%;
+	height: 100px;
+	background: white;
+	box-shadow: 0 0 10px black;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#fen_sup_base h4
+{
+	padding-top: 5%;
+}
+
+#sup_yes_or_no
+{
+	display: inline-block;
+	width: 100%;
+}
+
+#ico_sup_base
+{
+	float: left;
+	width: 10%;
+	margin-left: 26%;
+}
+
+#ico_sup_base_ex
+{
+	float: left;
+	width: 10%;
+	margin-left: 26%;
+}
