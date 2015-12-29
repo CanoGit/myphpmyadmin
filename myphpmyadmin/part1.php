@@ -113,7 +113,7 @@
 					$rename_base = 0;
 					$ancien_name = 0;
 					if (isset($_GET['host']) && isset($_GET['loggin']) && isset($_GET['pass']))
-						$conn = new PDO('mysql:host=' . $_GET['host'], $_GET['loggin'], '');
+						$conn = new PDO('mysql:host=' . $_GET['host'], $_GET['loggin'], $_GET['pass']);
 					if (isset($_GET['loggin']))
 						$loggin = $_GET['loggin'];
 					if (isset($_GET['pass']))
