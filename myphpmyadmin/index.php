@@ -6,6 +6,29 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	</head>
 	<body>
+		<?php 
+			$conn = 0;
+			if (isset($_POST['host']) && isset($_POST['loggin']) && isset($_POST['pass']))
+			{
+				try
+				{
+					$conn = new PDO('mysql:host=' . $_POST['host'], $_POST['loggin'], '');
+				}
+				catch (PDOException $e)
+				{
+					$error = $e->getmessage();
+				}
+			}
+			if ($conn != 0)
+			{
+				session_start();
+				$_SESSION['host'] = $_POST['host'];
+				$_SESSION['loggin'] = $_POST['loggin'];
+				$_SESSION['pass'] = $_POST['pass'];
+				header('Location: part1.php');
+				exit();
+			}
+		?>
 		<nav>
 			<div class="nav-wrapper indigo lighten-3">
 				<a href="#!" class="brand-logo">MyPhpMyAdmin</a>
@@ -21,7 +44,7 @@
 					<h5>Bienvenue</h5>
 					<p>
 						<div class="row">
-							<form class="col s12" action="part1.php" method="GET">
+							<form class="col s12" action="index.php" method="post">
 								<div class="row">
 									<div class="input-field col s12">
 										<input id="host" name="host" type="text" class="validate">

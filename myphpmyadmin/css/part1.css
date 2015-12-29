@@ -74,7 +74,14 @@ body
 
 #div_info_base
 {
-	height: 10%;
+	height: auto;
+	width: 100%;
+}
+
+#tab_info_base
+{
+	border-bottom: 1px solid white;
+	margin-left: 1.5%;
 }
 
 #edit_base
