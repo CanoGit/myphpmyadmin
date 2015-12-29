@@ -34,22 +34,22 @@ $('#loggin').keyup(function()
 	check();
 });
 
-$('#pass').keyup(function()
-{
-	if ($('#pass').val().match(/^.+$/))
-	{
-		input3 = true;
-	}
-	else
-	{
-		input3 = false;
-	}
-	check();
-});
+//$('#pass').keyup(function()
+// {
+	// if ($('#pass').val().match(/^.+$/))
+	// {
+		// input3 = true;
+	// }
+	// else
+	// {
+		// input3 = false;
+	// }
+	// check();
+// });
 
 function	check()
 {
-	if (input1 && input2 && input3)
+	if (input1 && input2)
 		$('button[name=connexion]').prop('disabled', false);
 	else
 		$('button[name=connexion]').prop('disabled', true);
