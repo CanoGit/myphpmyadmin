@@ -72,7 +72,7 @@
 					$rename_base = 0;
 					$ancien_name = 0;
 					if (isset($_SESSION['host']) && isset($_SESSION['loggin']) && isset($_SESSION['pass']))
-						$conn = new PDO('mysql:host=' . $_SESSION['host'], $_SESSION['loggin'], '');
+						$conn = new PDO('mysql:host=' . $_SESSION['host'], $_SESSION['loggin'], $_SESSION['pass']);
 					if (isset($_GET['creation_base']))
 						$creation_base = $_GET['creation_base'];
 					if (isset($_GET['ancien_base']))
@@ -140,7 +140,7 @@
 					$info_base = 0;
 					$esp_men = 0;
 					if (isset($_SESSION['host']) && isset($_SESSION['loggin']) && isset($_SESSION['pass']))
-						$conn = new PDO('mysql:host=' . $_SESSION['host'], $_SESSION['loggin'], '');
+						$conn = new PDO('mysql:host=' . $_SESSION['host'], $_SESSION['loggin'], $_SESSION['pass']);
 					if (isset($_GET['info_base']))
 						$info_base = $_GET['info_base'];
 					if (isset($_GET['name_base']))
