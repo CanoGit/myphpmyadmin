@@ -1,15 +1,30 @@
+body
+{
+	height: 100%;
+	width: auto;
+	margin: 0 0 0 0;
+	font-family: Arial, sans-serif;
+	font-size: 15px;
+	background: #DCDDDA;
+	overflow-x: hidden;
+}
+
 #pan_base
 {
-	border: 1px solid black;
-	width: 30%;
+	width: 20%;
 	float: left;
 	height: 100%;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	padding-right: 10px;
+	border-right: 1px solid white;
+	vertical-align: top;
 }
 
 #pan_table
 {
 	border: 1px solid red;
-	width: 70%;
+	width: 80%;
 	float: left;
 	height: 100%;
 }
@@ -18,30 +33,24 @@
 {
 	height: 50%;
 	width: 100%;
-	border: 1px solid green;
 }
 
 #div_info_base
 {
 	height: 50%;
 	width: 100%;
-	border: 1px solid pink;
 }
 
 #ico_crea
 {
-	border: 1px solid black;
-	
-}
-
-#ico_creation_p
-{
-	border: 1px solid black;
+	width: 100%;
 }
 
 #ico_creation
 {
-	height: 40px;
+	height: 30px;
+	margin-left: 5px; 
+	margin-top: 5px;
 }
 
 #ico
@@ -51,7 +60,21 @@
 
 #ico_img
 {
-	height: 50px;
+	height: 30px;	
+}
+
+#l_base
+{
+	height: 80%;
+	margin-right: 5px;
+	margin-left: 5px;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+#div_info_base
+{
+	height: 10%;
 }
 
 #new_base
@@ -88,7 +111,7 @@
 #fen_new_base
 {
 	width: 20%;
-	height: 19%;
+	height: 12%;
 	margin-top: 3%;
 	margin-left: auto;
 	margin-right: auto;
@@ -103,26 +126,26 @@
 	margin-top: 20px;
 }
 
-#field_new_base
-{
-	margin-left: 4%;
-	border: none;
-}
-
 #new_base_form
 {
 	text-align: center;
+	height: 70%;
+	border: 2px solid white;
+	border-radius: 5px;
 }
 
 #inp_new_base
 {
-	width: 100%;
+	width: 90%;
+	height: 20%;
 	border: 2px solid #4A9FF2;
 	border-radius: 5px;
 	padding-top: 3px;
 	padding-bottom: 3px;
 	outline-style: none;
 	padding-left: 2px;
+	margin-left: 4%;
+	margin-top: 5%;
 }
 
 #inp_new_base:focus
@@ -138,6 +161,7 @@
 	color: white;
 	text-decoration: none;
 	padding: 2px 5px 2px 5px;
+	margin-bottom: 20px;
 }
 
 #val_new_base:hover
@@ -165,16 +189,11 @@
 	margin-right: auto;
 	margin-top: 5%;
 	width: 20%;
-	height: 100px;
+	height: 10%;
 	background: white;
 	box-shadow: 0 0 10px black;
 	border-radius: 5px;
 	text-align: center;
-}
-
-#fen_sup_base h4
-{
-	padding-top: 5%;
 }
 
 #sup_yes_or_no

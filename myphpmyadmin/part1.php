@@ -18,23 +18,21 @@
 		</nav>
 		<section id="pan_base">
 			<div id="ico_crea">
-				<a href="/myphpmyadmin/part1.php?#new_base"><img id="ico_creation" src="ico/crea.png" alt="Création" title="Creéation"></p>
+				<a href="/myphpmyadmin/part1.php?#new_base" id="ico_creation_a"><img id="ico_creation" src="ico/crea.png" alt="Création" title="Création"></a>
 			</div>
 			<div id="new_base">
 				<div id="fen_new_base">
 					<a href="#noWhere" id="fermer_new_base">X</a>
 					<form id="new_base_form" action="part1.php" method="GET">
-						<fieldset id="field_new_base">
-							<p><input type="text" name="name_new_base" id="inp_new_base" placeholder="Nom base"/></p>
-							<p><input type="hidden" name="creation_base" value="1" /></p>
-						</fieldset>
-						<input type="submit" name="val_new_base" id="val_new_base" value="Connection"/>
+						<input type="text" name="name_new_base" id="inp_new_base" placeholder="Nom base"/>
+						<input type="hidden" name="creation_base" value="1" />
+						<input type="submit" name="val_new_base" id="val_new_base" value="Création"/>
 					</form>
 				</div>
 			</div>
 			<div id="sup_base">
 				<div id="fen_sup_base">
-					<h4>Confirmer la suppression :</h4>
+					<h5>Confirmer la suppression :</h5>
 					<div id="sup_yes_or_no">
 						<?php
 							$name_sup_base = 0;
@@ -87,9 +85,9 @@
 					if ($conn)
 					{
 						$sql =  'SHOW DATABASES;';
-						echo "<ul>";
+						echo "<ul id='ico_ul'>";
 						foreach  ($conn->query($sql) as $row) {
-							echo "<li><a href='/myphpmyadmin/part1.php?name_sup_base=" . $row[0] . "&#sup_base' id='ico'><img src='ico/sup.png' id='ico_img' alt='Supprimer' title='Supprimer'></a>";
+							echo "<li id='ico_li'><a href='/myphpmyadmin/part1.php?name_sup_base=" . $row[0] . "&#sup_base' id='ico'><img src='ico/sup.png' id='ico_img' alt='Supprimer' title='Supprimer'></a>";
 							echo "<a href='/myphpmyadmin/part1.php?name_base=" . $row[0] . "&edit_base=1' id='ico'><img src='ico/edit.png' id='ico_img' alt='Editer' title='Editer'></a>";
 							echo "<a href='/myphpmyadmin/part1.php?name_base=" . $row[0] . "&infp_base=1' id='ico'><img src='ico/info.png' id='ico_img' alt='Information' title='Information'></a>" . $row[0] . "</li>";
 						}
