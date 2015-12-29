@@ -113,7 +113,7 @@
 					$rename_base = 0;
 					$ancien_name = 0;
 					if (isset($_GET['host']) && isset($_GET['loggin']) && isset($_GET['pass']))
-						$conn = new PDO('mysql:host=' . $_GET['host'], $_GET['loggin'], $_GET['pass']);
+						$conn = new PDO('mysql:host=' . $_GET['host'], $_GET['loggin'], '');
 					if (isset($_GET['loggin']))
 						$loggin = $_GET['loggin'];
 					if (isset($_GET['pass']))
@@ -162,13 +162,11 @@
 							$conn->query($sql);
 							$sql = "SHOW TABLES FROM " . $ancien_name . ";";
 							foreach  ($conn->query($sql) as $row) {
-								$sql = "CREATE TABLE " . $row[0] . ";";
-								$conn->query($sql);
-								$sql = "INSERT INTO " . $name . "." . $row[0] . " (SELECT * FROM " . $ancien_name . "." . $row[0] . " );";
+								$sql = "CREATE TABLE " . $name . "." . $row[0] . " AS SELECT * FROM " . $ancien_name . "." . $row[0] . " ;";
 								$conn->query($sql);
 							}
+							$sql = "DROP DATABASE " . $ancien_name . ";";
 							$conn->query($sql);
-							#$sql = "DROP DATABASE " . $name . ";";
 						}
 					}
 			
