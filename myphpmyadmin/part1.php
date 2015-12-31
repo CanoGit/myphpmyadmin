@@ -205,7 +205,7 @@
 			<?php
 				$aff_base = 0;
 				$aff_table = 0;
-				$pri = 0;
+				$pri = '';
 				$name = 0;
 				$conn = 0;
 				$sup_tab = 0;
@@ -256,9 +256,12 @@
 					$sql2 = '';
 					$sql = "DESCRIBE " . $name . "." . $name_table . ";";
 					foreach  ($conn->query($sql) as $row) {
-						$tab_info[$i] = $_GET[$row['Field']];
-						$tab_title[$i] = $row['Field'];
-						$i++;
+						if ($row['Key'] != 'PRI')
+						{
+							$tab_info[$i] = $_GET[$row['Field']];
+							$tab_title[$i] = $row['Field'];
+							$i++;
+						}
 					}
 					for ($j = 0; $j < $i; $j++)
 					{
@@ -333,28 +336,33 @@
 				{
 					if ($conn)
 					{
+						$sql = "DESCRIBE " . $name . "." . $name_table . ";";
+						foreach  ($conn->query($sql) as $row) {
+							if(isset($row['Key']) && $row['Key'] == 'PRI'){ 
+								$pri = $row['Field']; 
+								break; 
+							} 
+						}
+						echo "<table id='tab_inf_table'>";
+						echo "<thead id='thead_inf_table'><tr>";
+						if ($pri != '')
+							echo "<th><a href='/myphpmyadmin/part1.php?name_base=" . $name . "&name_table=" . $name_table . "&aff_table=1&#add_row' id='ico_creation_a'><img id='ico_creation' src='ico/crea.png' alt='Création' title='Création'></a></th>";
 						$sql = "SHOW COLUMNS FROM " . $name . "." . $name_table . ";";
 						$i = 0;
-						echo "<table id='tab_inf_table'>";
-						echo "<thead id='thead_inf_table'><tr><th><a href='/myphpmyadmin/part1.php?name_base=" . $name . "&name_table=" . $name_table . "&aff_table=1&#add_row' id='ico_creation_a'><img id='ico_creation' src='ico/crea.png' alt='Création' title='Création'></a></th>";
 						foreach  ($conn->query($sql) as $row) {
 							$i++;
 							echo "<th>" . $row[0] . "</th>";
 						}
 						echo "</tr></thead>";
 						echo "<tbody id='tbody_table'>";
-						$sql = "DESCRIBE " . $name . "." . $name_table . ";";
-						foreach  ($conn->query($sql) as $row) {
-							if(isset($row['Key']) && $row['Key'] == 'PRI'){ 
-								$pri= $row['Field']; 
-								break; 
-							} 
-						}
 						$sql = "SELECT * FROM " . $name . "." . $name_table . ";";
 						foreach  ($conn->query($sql) as $row) {
 							echo "<tr id='tr_inf_table'>";
-							echo "<td><a href='/myphpmyadmin/part1.php?name_base=" . $name . "&name_table=" . $name_table . "&id=" . $row[$pri] . "&name_pri=" . $pri . "&aff_table=1&#sup_table' id='ico'><img src='ico/sup.png' id='ico_img' alt='Supprimer' title='Supprimer'></a>";
-							echo "<a href='/myphpmyadmin/part1.php?name_base=" . $name . "&name_table=" . $name_table . "&id=" . $row[$pri] . "&name_pri=" . $pri . "&aff_table=1&#edit_table' id='ico'><img src='ico/edit.png' id='ico_img' alt='Editer' title='Editer'></a></td>";
+							if ($pri != '')
+							{
+								echo "<td><a href='/myphpmyadmin/part1.php?name_base=" . $name . "&name_table=" . $name_table . "&id=" . $row[$pri] . "&name_pri=" . $pri . "&aff_table=1&#sup_table' id='ico'><img src='ico/sup.png' id='ico_img' alt='Supprimer' title='Supprimer'></a>";
+								echo "<a href='/myphpmyadmin/part1.php?name_base=" . $name . "&name_table=" . $name_table . "&id=" . $row[$pri] . "&name_pri=" . $pri . "&aff_table=1&#edit_table' id='ico'><img src='ico/edit.png' id='ico_img' alt='Editer' title='Editer'></a></td>";	
+							}
 							for ($j = 0; $j < $i; $j++)
 							{
 								echo "<td>";
@@ -404,8 +412,10 @@
 										$nb = explode('(', $nb_1[0]);
 										if ($nb[0] == "char")
 											echo "<input type='text' name=" . $row['Field'] . " id=" . $row['Field'] . " maxlength=" . $nb[1] . " placeholder=" . $row['Field'] . " />";
-										if ($nb[0] == "int")
+										else if ($nb[0] == "int")
 											echo "<input type='number' name=" . $row['Field'] . " id=" . $row['Field'] . " placeholder=" . $row['Field'] . " />";
+										else
+											echo "<input type='text' name=" . $row['Field'] . " id=" . $row['Field'] . " placeholder=" . $row['Field'] . " />";
 									}
 									$i++;
 								}
@@ -457,10 +467,11 @@
 										$nb = explode('(', $nb_1[0]);
 										if ($nb[0] == "char")
 											echo "<input type='text' name=" . $row['Field'] . " id=" . $row['Field'] . " maxlength=" . $nb[1] . " value=" . $value[0][$i] . " />";
-										if ($nb[0] == "int")
+										else if ($nb[0] == "int")
 											echo "<input type='number' name=" . $row['Field'] . " id=" . $row['Field'] . " value=" . $value[0][$i] . " />";
+										else
+											echo "<input type='text' name=" . $row['Field'] . " id=" . $row['Field'] . " value=" . $value[0][$i] . " />";
 									}
-									
 								}
 								$i++;
 							}
